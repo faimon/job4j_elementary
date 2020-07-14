@@ -6,27 +6,20 @@ public class Matches {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int numbersOfSpichki = 11;
-        int whoLastTakeSpichki = 0;
+        boolean whoLastTakeSpichki = false;
         int select;
         while (numbersOfSpichki > 0) {
-            System.out.println("Первый игрок, введите число от 1 до 3");
+            System.out.println("Спичек на столе: " + numbersOfSpichki);
+            int player = !whoLastTakeSpichki ? 1 : 2;
+            System.out.println("Игрок № " + player + " Выберите количество спичек от 1 до 3");
             select = Integer.valueOf(input.nextLine());
             numbersOfSpichki -= select;
-            whoLastTakeSpichki = 1;
-            if (numbersOfSpichki <= 0) {
-                break;
-            }
-            System.out.println("Осталось " + numbersOfSpichki + " спичек");
-            System.out.println("Второй игрок, введите число от 1 до 3");
-            select = Integer.valueOf(input.nextLine());
-            numbersOfSpichki -= select;
-            whoLastTakeSpichki = 2;
-            System.out.println("Осталось " + numbersOfSpichki + " спичек");
+            whoLastTakeSpichki = !whoLastTakeSpichki;
         }
-        if (whoLastTakeSpichki == 1) {
+        if (whoLastTakeSpichki) {
             System.out.println("Первый игрок победил");
         }
-        if (whoLastTakeSpichki == 2) {
+        if (!whoLastTakeSpichki) {
             System.out.println("Второй игрок победил");
         }
     }
