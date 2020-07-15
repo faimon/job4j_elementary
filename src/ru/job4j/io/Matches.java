@@ -11,16 +11,18 @@ public class Matches {
         while (numbersOfSpichki > 0) {
             System.out.println("Спичек на столе: " + numbersOfSpichki);
             int player = !whoLastTakeSpichki ? 1 : 2;
-            System.out.println("Игрок № " + player + " Выберите количество спичек от 1 до 3");
+            System.out.println("Игрок № " + player + " выберите количество спичек от 1 до 3");
             select = Integer.valueOf(input.nextLine());
+            while (select < 1 || select > 3) {
+                System.out.println("Игрок № " + player + " введите корректное количество спичек от 1 до 3");
+                select = Integer.valueOf(input.nextLine());
+            }
             numbersOfSpichki -= select;
             whoLastTakeSpichki = !whoLastTakeSpichki;
-        }
-        if (whoLastTakeSpichki) {
-            System.out.println("Первый игрок победил");
-        }
-        if (!whoLastTakeSpichki) {
-            System.out.println("Второй игрок победил");
+            if (numbersOfSpichki == 0) {
+                System.out.println("Победил игрок № " + player);
+                break;
+            }
         }
     }
 }
