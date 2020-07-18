@@ -8,6 +8,7 @@ public class UserStore {
         for (int i = 0; i < users.length; i++) {
             if (users[i].getUsername().equals(login)) {
                 user = new User(users[i].getUsername(), users[i].isValid());
+                break;
             }
         }
         if (user == null) {
